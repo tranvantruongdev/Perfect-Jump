@@ -21,6 +21,7 @@ public class AudioManager : MonoBehaviour {
 
     private bool muteMusic;
     private bool muteEfx;
+    private AudioClip lastRequestedMusic;
 
     void Awake()
     {
@@ -38,13 +39,19 @@ public class AudioManager : MonoBehaviour {
         muteMusic = PlayerPrefs.GetInt("MuteMusic") == 1 ? true : false;
         muteEfx = PlayerPrefs.GetInt("MuteEfx") == 1 ? true : false;
 
+        ApplyMuteStatesToSources();
         PlayMusic(menuMusic);
     }
 	
     public void PlayMusic(AudioClip clip)
     {
+        lastRequestedMusic = clip;
         if (muteMusic)
+        {
+            musicSource.clip = clip;
+            musicSource.Pause();
             return;
+        }
 
         musicSource.clip = clip;
         if (!musicSource.isPlaying)
@@ -69,13 +76,16 @@ public class AudioManager : MonoBehaviour {
         if (muteMusic)
         {
             muteMusic = false;
-            PlayMusic(menuMusic);
+            ApplyMuteStatesToSources();
+            // resume last requested track or fallback to menu
+            PlayMusic(lastRequestedMusic != null ? lastRequestedMusic : menuMusic);
             PlayerPrefs.SetInt("MuteMusic", 0);
         }
         else
         {
             muteMusic = true;
-            StopMusic();
+            ApplyMuteStatesToSources();
+            musicSource.Pause();
             PlayerPrefs.SetInt("MuteMusic", 1);
         }
     }
@@ -88,6 +98,7 @@ public class AudioManager : MonoBehaviour {
             PlayerPrefs.SetInt("MuteEfx", 1);
 
         muteEfx = !muteEfx;
+        ApplyMuteStatesToSources();
     }
 
     public bool IsMusicMute()
@@ -98,5 +109,13 @@ public class AudioManager : MonoBehaviour {
     public bool IsEfxMute()
     {
         return muteEfx;
+    }
+
+    private void ApplyMuteStatesToSources()
+    {
+        if (musicSource != null)
+            musicSource.mute = muteMusic;
+        if (efxSource != null)
+            efxSource.mute = muteEfx;
     }
 }

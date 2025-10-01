@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
+using System.Collections;
 
 public class AudioButton : MonoBehaviour
 {
@@ -11,6 +12,17 @@ public class AudioButton : MonoBehaviour
     //set button sprite
     void Start()
     {
+        SetButton();
+    }
+
+    void OnEnable()
+    {
+        StartCoroutine(RefreshNextFrame());
+    }
+
+    IEnumerator RefreshNextFrame()
+    {
+        yield return null;
         SetButton();
     }
 
