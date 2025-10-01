@@ -37,8 +37,8 @@ public class AudioButton : MonoBehaviour
                 spriteButton.sprite = musicOnSprite;
         else
             if (efx)
-                spriteButton.sprite = efxOffSprite;
-            else
-                spriteButton.sprite = musicOffSprite;
+            spriteButton.sprite = efxOffSprite;
+        else
+            spriteButton.sprite = musicOffSprite;
     }
 }
