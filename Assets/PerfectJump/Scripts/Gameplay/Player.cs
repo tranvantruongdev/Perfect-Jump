@@ -23,7 +23,7 @@ public class Player : MonoBehaviour
             Rigidbody2D tempRigidbody2D = collision.gameObject.GetComponent<Rigidbody2D>();
 
             //dont play hit sound on first obstacle
-            if (collision.gameObject.GetComponent<Obstacle>().index == 0)
+            if (collision.gameObject.GetComponent<Obstacle>().IndexCounter == 0)
             {
                 trailMaterial.color = collision.gameObject.GetComponent<SpriteRenderer>().color;
                 spriteRenderer.color = collision.gameObject.GetComponent<SpriteRenderer>().color;

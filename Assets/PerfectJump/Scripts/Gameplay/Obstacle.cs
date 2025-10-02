@@ -2,8 +2,8 @@
 
 public class Obstacle : MonoBehaviour
 {
-    public int index;
-    public bool hit;
+    public int IndexCounter;
+    public bool IsHit;
 
     void OnBecameInvisible()
     {

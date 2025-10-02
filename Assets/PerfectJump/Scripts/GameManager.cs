@@ -83,7 +83,7 @@ public class GameManager : MonoBehaviour
         _lastObstacleGameObject = Instantiate(ObstaclePrefabGameObject);
         _lastObstacleGameObject.transform.position = new Vector2(-1.5f, -1.5f);
         _lastObstacleGameObject.GetComponent<SpriteRenderer>().color = GetRandomColorFromConfig();
-        _lastObstacleGameObject.GetComponent<Obstacle>().index = _obstacleIndexNumber;
+        _lastObstacleGameObject.GetComponent<Obstacle>().IndexCounter = _obstacleIndexNumber;
 
         //player on the first obstacle
         PlayerGameObject.transform.SetPositionAndRotation(new Vector2(-1.5f, -.8f), new Quaternion(0, 0, 0, 0));
@@ -98,7 +98,7 @@ public class GameManager : MonoBehaviour
         _lastObstacleGameObject = Instantiate(ObstaclePrefabGameObject);
         _lastObstacleGameObject.transform.position = new Vector2(1f, -.5f);
         _lastObstacleGameObject.GetComponent<SpriteRenderer>().color = GetRandomColorFromConfig();
-        _lastObstacleGameObject.GetComponent<Obstacle>().index = _obstacleIndexNumber;
+        _lastObstacleGameObject.GetComponent<Obstacle>().IndexCounter = _obstacleIndexNumber;
 
         //third obstacle
         CreateNewObstacleObject();
@@ -124,7 +124,7 @@ public class GameManager : MonoBehaviour
         _newObstacleGameObject = Instantiate(ObstaclePrefabGameObject);
         _newObstacleGameObject.transform.position = new Vector2(_lastObstacleGameObject.transform.position.x + _xDistanceBetweenObstaclesConfig, newObstacleY);
         _newObstacleGameObject.GetComponent<SpriteRenderer>().color = GetRandomColorFromConfig();
-        _newObstacleGameObject.GetComponent<Obstacle>().index = _obstacleIndexNumber;
+        _newObstacleGameObject.GetComponent<Obstacle>().IndexCounter = _obstacleIndexNumber;
         _lastObstacleGameObject = _newObstacleGameObject;
     }
 
