@@ -3364,15 +3364,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6385fc00be14c498da4b5aee0e0bb96a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  efxSource: {fileID: 5883328175011186498}
-  musicSource: {fileID: 3407854840178802899}
-  menuMusic: {fileID: 8300000, guid: 1677120fa2a814fe3b8c17719001e1ab, type: 3}
-  gameMusic: {fileID: 8300000, guid: d9b2d29c2306240be8c61856514ccaa1, type: 3}
-  buttonClick: {fileID: 8300000, guid: dd83d63035cc640d78c3f35876b0725a, type: 3}
-  jump: {fileID: 8300000, guid: de838b4b9f8cf4091b05daf43e2db312, type: 3}
-  hit: {fileID: 8300000, guid: b124d6e2bbe1f4f619843fe5b32dc05e, type: 3}
-  gameOver: {fileID: 8300000, guid: 9922e785a12f74db0aafd212f52afc41, type: 3}
-  perfect: {fileID: 8300000, guid: ffcee1866df2745aaa67b2906c9d8a58, type: 3}
+  EfxAudioSource: {fileID: 5883328175011186498}
+  MusicAudioSource: {fileID: 3407854840178802899}
+  MenuMusicAudio: {fileID: 8300000, guid: 1677120fa2a814fe3b8c17719001e1ab, type: 3}
+  GameMusicAudio: {fileID: 8300000, guid: d9b2d29c2306240be8c61856514ccaa1, type: 3}
+  ButtonClickAudio: {fileID: 8300000, guid: dd83d63035cc640d78c3f35876b0725a, type: 3}
+  JumpAudio: {fileID: 8300000, guid: de838b4b9f8cf4091b05daf43e2db312, type: 3}
+  HitAudio: {fileID: 8300000, guid: b124d6e2bbe1f4f619843fe5b32dc05e, type: 3}
+  GameOverAudio: {fileID: 8300000, guid: 9922e785a12f74db0aafd212f52afc41, type: 3}
+  PerfectAudio: {fileID: 8300000, guid: ffcee1866df2745aaa67b2906c9d8a58, type: 3}
 --- !u!4 &8924390894509171627
 Transform:
   m_ObjectHideFlags: 0

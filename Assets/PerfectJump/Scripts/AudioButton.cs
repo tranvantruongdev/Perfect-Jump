@@ -30,20 +30,20 @@ public class AudioButton : MonoBehaviour
     public void OnMusicButtonClicked()
     {
         AudioManager.Instance.MuteMusic();
-        AudioManager.Instance.PlayEffects(AudioManager.Instance.buttonClick);
+        AudioManager.Instance.PlayEffectsAudio(AudioManager.Instance.ButtonClickAudio);
         SetButtonSpriteDisplay();
     }
 
     public void OnEfxButtonClicked()
     {
         AudioManager.Instance.MuteEfx();
-        AudioManager.Instance.PlayEffects(AudioManager.Instance.buttonClick);
+        AudioManager.Instance.PlayEffectsAudio(AudioManager.Instance.ButtonClickAudio);
         SetButtonSpriteDisplay();
     }
 
     void SetButtonSpriteDisplay()
     {
-        if ((!AudioManager.Instance.IsMusicMute() && !_isEfx) || (!AudioManager.Instance.IsEfxMute() && _isEfx))
+        if ((!AudioManager.Instance.IsMusicMuted() && !_isEfx) || (!AudioManager.Instance.IsEfxMuted() && _isEfx))
             if (_isEfx)
                 _spriteButtonImage.sprite = _efxOnSpriteAsset;
             else

@@ -36,9 +36,9 @@ public class UIManager : MonoBehaviour
             if (IsButton())
                 return;
 
-            AudioManager.Instance.PlayEffects(AudioManager.Instance.buttonClick);
+            AudioManager.Instance.PlayEffectsAudio(AudioManager.Instance.ButtonClickAudio);
             ShowGameplay();
-            AudioManager.Instance.PlayMusic(AudioManager.Instance.gameMusic);
+            AudioManager.Instance.PlayMusic(AudioManager.Instance.GameMusicAudio);
         }
         else if (Input.GetMouseButtonUp(0) && clicked && gameState == GameStateEnum.MENU)
             clicked = false;
@@ -53,7 +53,7 @@ public class UIManager : MonoBehaviour
         gameplayGui.SetActive(false);
         gameOverGui.SetActive(false);
         gameState = GameStateEnum.MENU;
-        AudioManager.Instance.PlayEffects(AudioManager.Instance.buttonClick);
+        AudioManager.Instance.PlayEffectsAudio(AudioManager.Instance.ButtonClickAudio);
         GameManager.Instance.ClearScene();
 
         // Always resume time when returning to main menu to avoid being stuck paused
@@ -86,7 +86,7 @@ public class UIManager : MonoBehaviour
         pauseGui.SetActive(true);
         Time.timeScale = 0;
         gameState = GameStateEnum.PAUSED;
-        AudioManager.Instance.PlayEffects(AudioManager.Instance.buttonClick);
+        AudioManager.Instance.PlayEffectsAudio(AudioManager.Instance.ButtonClickAudio);
     }
 
     //hide pause menu
@@ -95,7 +95,7 @@ public class UIManager : MonoBehaviour
         pauseGui.SetActive(false);
         Time.timeScale = 1;
         gameState = GameStateEnum.PLAYING;
-        AudioManager.Instance.PlayEffects(AudioManager.Instance.buttonClick);
+        AudioManager.Instance.PlayEffectsAudio(AudioManager.Instance.ButtonClickAudio);
     }
 
     //show gameplay gui
@@ -109,7 +109,7 @@ public class UIManager : MonoBehaviour
         if (GameManager.Instance != null && GameManager.Instance.scoreManager != null)
             GameManager.Instance.scoreManager.ResetCurrentScore();
         gameState = GameStateEnum.PLAYING;
-        AudioManager.Instance.PlayEffects(AudioManager.Instance.buttonClick);
+        AudioManager.Instance.PlayEffectsAudio(AudioManager.Instance.ButtonClickAudio);
     }
 
     //show game over gui
@@ -120,7 +120,7 @@ public class UIManager : MonoBehaviour
         gameplayGui.SetActive(false);
         gameOverGui.SetActive(true);
         gameState = GameStateEnum.GAMEOVER;
-        AudioManager.Instance.PlayMusic(AudioManager.Instance.menuMusic);
+        AudioManager.Instance.PlayMusic(AudioManager.Instance.MenuMusicAudio);
     }
 
     //check if user click any menu button

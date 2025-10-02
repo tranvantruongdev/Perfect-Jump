@@ -140,7 +140,7 @@ public class GameManager : MonoBehaviour
         CreateScene();
         uIManager.ShowGameplay();
         inAir = false;
-        AudioManager.Instance.PlayMusic(AudioManager.Instance.gameMusic);
+        AudioManager.Instance.PlayMusic(AudioManager.Instance.GameMusicAudio);
     }
 
 
@@ -170,7 +170,7 @@ public class GameManager : MonoBehaviour
     {
         if (uIManager.gameState == GameStateEnum.PLAYING)
         {
-            AudioManager.Instance.PlayEffects(AudioManager.Instance.gameOver);
+            AudioManager.Instance.PlayEffectsAudio(AudioManager.Instance.GameOverAudio);
             uIManager.ShowGameOver();
             scoreManager.UpdateScoreGameover();
         }

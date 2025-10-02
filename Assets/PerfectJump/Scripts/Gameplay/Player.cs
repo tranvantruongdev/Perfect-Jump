@@ -30,7 +30,7 @@ public class Player : MonoBehaviour
                 return;
             }
 
-            AudioManager.Instance.PlayEffects(AudioManager.Instance.hit);
+            AudioManager.Instance.PlayEffectsAudio(AudioManager.Instance.HitAudio);
 
             //Debug.Log(Mathf.Abs(collision.transform.position.x - transform.position.x));
 
@@ -45,7 +45,7 @@ public class Player : MonoBehaviour
                 //perfect hit
                 if (Mathf.Abs(collision.transform.position.x - transform.position.x) < .05f)
                 {
-                    AudioManager.Instance.PlayEffects(AudioManager.Instance.perfect);
+                    AudioManager.Instance.PlayEffectsAudio(AudioManager.Instance.PerfectAudio);
                     transform.position = new Vector2(collision.transform.position.x, transform.position.y);
                     GameManager.Instance.scoreManager.UpdateScore(2);
                     GameManager.Instance.PlayPerfect();
