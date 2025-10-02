@@ -2,17 +2,17 @@
 
 public class Player : MonoBehaviour
 {
-    public SpriteRenderer spriteRenderer;
-    public Material trailMaterial;
+    public SpriteRenderer SpriteRendererReference;
+    public Material TrailMaterialAsset;
 
     private void OnBecameInvisible()
     {
         GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Static;
-        spriteRenderer.enabled = false;
+        SpriteRendererReference.enabled = false;
         GetComponent<TrailRenderer>().enabled = false;
 
         if (GameManager.S_Instance.UIManagerInstance.GameStateEnum == GameStateEnum.PLAYING)
-            GameManager.S_Instance.GameOver();
+            GameManager.S_Instance.SetGameOver();
     }
 
     //when player hit obstacle object
@@ -25,8 +25,8 @@ public class Player : MonoBehaviour
             //dont play hit sound on first obstacle
             if (collision.gameObject.GetComponent<Obstacle>().IndexCounter == 0)
             {
-                trailMaterial.color = collision.gameObject.GetComponent<SpriteRenderer>().color;
-                spriteRenderer.color = collision.gameObject.GetComponent<SpriteRenderer>().color;
+                TrailMaterialAsset.color = collision.gameObject.GetComponent<SpriteRenderer>().color;
+                SpriteRendererReference.color = collision.gameObject.GetComponent<SpriteRenderer>().color;
                 return;
             }
 
@@ -36,7 +36,7 @@ public class Player : MonoBehaviour
 
             if (Mathf.Abs(collision.transform.position.x - transform.position.x) > .45f) //more than half player si over the obstacle so dont enable gravity for it
             {
-                GameManager.S_Instance.GameOver();
+                GameManager.S_Instance.SetGameOver();
                 GetComponent<Rigidbody2D>().angularVelocity = 0;
                 GetComponent<Rigidbody2D>().linearVelocity = Vector2.zero;
             }
@@ -62,8 +62,8 @@ public class Player : MonoBehaviour
                 tempRigidbody2D.bodyType = RigidbodyType2D.Dynamic;
                 tempRigidbody2D.gravityScale = 3f;
                 tempRigidbody2D.constraints = RigidbodyConstraints2D.FreezePositionX | RigidbodyConstraints2D.FreezeRotation;
-                spriteRenderer.color = collision.gameObject.GetComponent<SpriteRenderer>().color;
-                trailMaterial.color = collision.gameObject.GetComponent<SpriteRenderer>().color;
+                SpriteRendererReference.color = collision.gameObject.GetComponent<SpriteRenderer>().color;
+                TrailMaterialAsset.color = collision.gameObject.GetComponent<SpriteRenderer>().color;
             }
         }
     }

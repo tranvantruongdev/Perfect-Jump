@@ -1014,8 +1014,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e71e9f520c955421b953a66c93a77147, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spriteRenderer: {fileID: 1034706089}
-  trailMaterial: {fileID: 2100000, guid: ed1922dc7df354b8b9fa6a791acfe97d, type: 2}
+  SpriteRendererReference: {fileID: 1034706089}
+  TrailMaterialAsset: {fileID: 2100000, guid: ed1922dc7df354b8b9fa6a791acfe97d, type: 2}
 --- !u!50 &1034706087
 Rigidbody2D:
   serializedVersion: 5

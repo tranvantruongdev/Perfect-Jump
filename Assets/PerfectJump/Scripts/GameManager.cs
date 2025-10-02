@@ -186,7 +186,7 @@ public class GameManager : MonoBehaviour
     }
 
     //show game over gui
-    public void GameOver()
+    public void SetGameOver()
     {
         if (UIManagerInstance.GameStateEnum == GameStateEnum.PLAYING)
         {
