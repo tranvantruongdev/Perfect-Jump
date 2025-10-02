@@ -1983,8 +1983,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 2033702357}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: RestartGame
+        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+        m_MethodName: RestartTheGame
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2655,26 +2655,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f3e044bb9b13a45a7b3e74852e4c3ad5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  uIManager: {fileID: 1210228303}
-  scoreManager: {fileID: 1662418496}
-  player: {fileID: 1034706085}
-  playerRigidbody2D: {fileID: 1034706087}
-  obstaclePrefab: {fileID: 939481408978044749, guid: f91430a14bab642b1b34ddcfa6c46599,
+  UIManagerInstance: {fileID: 1210228303}
+  ScoreManagerInstance: {fileID: 1662418496}
+  PlayerGameObject: {fileID: 1034706085}
+  PlayerRigidbody2DInstance: {fileID: 1034706087}
+  ObstaclePrefabGameObject: {fileID: 939481408978044749, guid: f91430a14bab642b1b34ddcfa6c46599,
     type: 3}
-  cam: {fileID: 534669904}
-  perfectAnimator: {fileID: 2045409397}
-  minYObstaclePosition: -4
-  maxYObstaclePosition: 2.5
-  obstacleColors:
-  - {r: 0.9647059, g: 0.4009434, b: 0.4009434, a: 1}
-  - {r: 1, g: 0.8434647, b: 0.39999998, a: 1}
-  - {r: 0.94057345, g: 1, b: 0.39999998, a: 1}
-  - {r: 0.59668887, g: 1, b: 0.39999998, a: 1}
-  - {r: 0.39999998, g: 1, b: 0.88870835, a: 1}
-  - {r: 0.39999998, g: 0.7489355, b: 1, a: 1}
-  - {r: 0.8777857, g: 0.39999998, b: 1, a: 1}
-  - {r: 1, g: 0.39999998, b: 0.746764, a: 1}
-  inAir: 0
+  Camera: {fileID: 534669904}
+  PerfectAnimatorInstance: {fileID: 2045409397}
+  MinYObstaclePositionConfig: -4
+  MaxYObstaclePositionConfig: 2.5
+  ObstacleColorsConfig: []
+  _isInAir: 0
 --- !u!4 &2033702358
 Transform:
   m_ObjectHideFlags: 0

@@ -2,7 +2,7 @@
 
 public class AudioManager : MonoBehaviour
 {
-    public static AudioManager Instance = null;
+    public static AudioManager S_Instance = null;
 
     [Header ("Audio Sources")]
     public AudioSource EfxAudioSource;
@@ -25,9 +25,9 @@ public class AudioManager : MonoBehaviour
 
     void Awake()
     {
-        if (Instance == null)
-            Instance = this;
-        else if (Instance != this)
+        if (S_Instance == null)
+            S_Instance = this;
+        else if (S_Instance != this)
             Destroy(gameObject);
 
         DontDestroyOnLoad(gameObject);

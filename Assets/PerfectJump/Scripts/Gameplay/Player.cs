@@ -11,8 +11,8 @@ public class Player : MonoBehaviour
         spriteRenderer.enabled = false;
         GetComponent<TrailRenderer>().enabled = false;
 
-        if (GameManager.Instance.uIManager.gameState == GameStateEnum.PLAYING)
-            GameManager.Instance.GameOver();
+        if (GameManager.S_Instance.UIManagerInstance.gameState == GameStateEnum.PLAYING)
+            GameManager.S_Instance.GameOver();
     }
 
     //when player hit obstacle object
@@ -30,13 +30,13 @@ public class Player : MonoBehaviour
                 return;
             }
 
-            AudioManager.Instance.PlayEffectsAudio(AudioManager.Instance.HitAudio);
+            AudioManager.S_Instance.PlayEffectsAudio(AudioManager.S_Instance.HitAudio);
 
             //Debug.Log(Mathf.Abs(collision.transform.position.x - transform.position.x));
 
             if (Mathf.Abs(collision.transform.position.x - transform.position.x) > .45f) //more than half player si over the obstacle so dont enable gravity for it
             {
-                GameManager.Instance.GameOver();
+                GameManager.S_Instance.GameOver();
                 GetComponent<Rigidbody2D>().angularVelocity = 0;
                 GetComponent<Rigidbody2D>().linearVelocity = Vector2.zero;
             }
@@ -45,20 +45,20 @@ public class Player : MonoBehaviour
                 //perfect hit
                 if (Mathf.Abs(collision.transform.position.x - transform.position.x) < .05f)
                 {
-                    AudioManager.Instance.PlayEffectsAudio(AudioManager.Instance.PerfectAudio);
+                    AudioManager.S_Instance.PlayEffectsAudio(AudioManager.S_Instance.PerfectAudio);
                     transform.position = new Vector2(collision.transform.position.x, transform.position.y);
-                    GameManager.Instance.scoreManager.UpdateScore(2);
-                    GameManager.Instance.PlayPerfect();
+                    GameManager.S_Instance.ScoreManagerInstance.UpdateScore(2);
+                    GameManager.S_Instance.PlayPerfectAnimation();
                 }
                 else
                 {
-                    GameManager.Instance.scoreManager.UpdateScore(1);
+                    GameManager.S_Instance.ScoreManagerInstance.UpdateScore(1);
                 }
 
                 transform.rotation = new Quaternion(0, 0, 0, 0);
                 GetComponent<Rigidbody2D>().angularVelocity = 0;
                 GetComponent<Rigidbody2D>().linearVelocity = Vector2.zero;
-                GameManager.Instance.inAir = false;
+                GameManager.S_Instance._isInAir = false;
                 tempRigidbody2D.bodyType = RigidbodyType2D.Dynamic;
                 tempRigidbody2D.gravityScale = 3f;
                 tempRigidbody2D.constraints = RigidbodyConstraints2D.FreezePositionX | RigidbodyConstraints2D.FreezeRotation;

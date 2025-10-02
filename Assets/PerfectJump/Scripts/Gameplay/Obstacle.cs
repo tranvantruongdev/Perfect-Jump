@@ -7,8 +7,8 @@ public class Obstacle : MonoBehaviour
 
     void OnBecameInvisible()
     {
-        if (GameManager.Instance.cam != null)
-            if (transform.position.x < GameManager.Instance.cam.transform.position.x || transform.position.y < -10)
+        if (GameManager.S_Instance.Camera != null)
+            if (transform.position.x < GameManager.S_Instance.Camera.transform.position.x || transform.position.y < -10)
                 Destroy(gameObject);
     }
 }
