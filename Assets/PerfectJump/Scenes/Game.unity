@@ -444,10 +444,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6abc1dc8c9f724dd895174d28e4f6a33, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TargetXFollow: {fileID: 1034706085}
-  speed: 40
-  xOffset: 1.5
-  uIManager: {fileID: 1210228303}
+  TargetXFollowGameObject: {fileID: 1034706085}
+  SpeedConfig: 40
+  XOffsetConfig: 1.5
+  UIManagerInstance: {fileID: 1210228303}
 --- !u!1 &752352229
 GameObject:
   m_ObjectHideFlags: 0
