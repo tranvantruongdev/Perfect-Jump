@@ -9,50 +9,50 @@ public class UIManager : MonoBehaviour
 {
 
     [Header("GUI Components")]
-    public GameObject mainMenuGui;
-    public GameObject pauseGui, gameplayGui, gameOverGui;
+    public GameObject MainMenuGuiGameObject;
+    public GameObject PauseGuiGameObject, GameplayGuiGameObject, GameOverGuiGameObject;
 
-    public GameStateEnum gameState;
+    public GameStateEnum GameStateEnum;
 
-    bool clicked;
-    [SerializeField] float minMenuStartDelay = 0.2f;
-    float menuEnterTime;
-    Coroutine clickedResetRoutine;
+    bool _isClicked;
+    [SerializeField] float _minMenuStartDelayConfig = 0.2f;
+    float _menuEnterTimeCounter;
+    Coroutine _clickedResetCoroutine;
 
     // Use this for initialization
     void Start()
     {
-        mainMenuGui.SetActive(true);
-        pauseGui.SetActive(false);
-        gameplayGui.SetActive(false);
-        gameOverGui.SetActive(false);
-        gameState = GameStateEnum.MENU;
+        MainMenuGuiGameObject.SetActive(true);
+        PauseGuiGameObject.SetActive(false);
+        GameplayGuiGameObject.SetActive(false);
+        GameOverGuiGameObject.SetActive(false);
+        GameStateEnum = GameStateEnum.MENU;
     }
 
     void Update()
     {
-        if (Input.GetMouseButtonDown(0) && gameState == GameStateEnum.MENU && !clicked)
+        if (Input.GetMouseButtonDown(0) && GameStateEnum == GameStateEnum.MENU && !_isClicked)
         {
-            if (IsButton())
+            if (IsButtonClicked())
                 return;
 
             AudioManager.S_Instance.PlayEffectsAudio(AudioManager.S_Instance.ButtonClickAudio);
-            ShowGameplay();
+            ShowGameplayUI();
             AudioManager.S_Instance.PlayMusic(AudioManager.S_Instance.GameMusicAudio);
         }
-        else if (Input.GetMouseButtonUp(0) && clicked && gameState == GameStateEnum.MENU)
-            clicked = false;
+        else if (Input.GetMouseButtonUp(0) && _isClicked && GameStateEnum == GameStateEnum.MENU)
+            _isClicked = false;
     }
 
     //show main menu
-    public void ShowMainMenu()
+    public void ShowMainMenuUI()
     {
-        clicked = true;
-        mainMenuGui.SetActive(true);
-        pauseGui.SetActive(false);
-        gameplayGui.SetActive(false);
-        gameOverGui.SetActive(false);
-        gameState = GameStateEnum.MENU;
+        _isClicked = true;
+        MainMenuGuiGameObject.SetActive(true);
+        PauseGuiGameObject.SetActive(false);
+        GameplayGuiGameObject.SetActive(false);
+        GameOverGuiGameObject.SetActive(false);
+        GameStateEnum = GameStateEnum.MENU;
         AudioManager.S_Instance.PlayEffectsAudio(AudioManager.S_Instance.ButtonClickAudio);
         GameManager.S_Instance.ClearTheScene();
 
@@ -62,85 +62,85 @@ public class UIManager : MonoBehaviour
         GameManager.S_Instance.CreateNewScene();
 
         // Ensure we only re-enable clicks after the user has released the button once
-        if (clickedResetRoutine != null)
-            StopCoroutine(clickedResetRoutine);
-        menuEnterTime = Time.unscaledTime;
-        clickedResetRoutine = StartCoroutine(EnableClickAfterPointerRelease());
+        if (_clickedResetCoroutine != null)
+            StopCoroutine(_clickedResetCoroutine);
+        _menuEnterTimeCounter = Time.unscaledTime;
+        _clickedResetCoroutine = StartCoroutine(EnableClickAfterPointerRelease());
     }
 
     IEnumerator EnableClickAfterPointerRelease()
     {
         // Wait until the user releases the button and the minimum delay has passed
-        while (Input.GetMouseButton(0) || (Time.unscaledTime - menuEnterTime) < minMenuStartDelay)
+        while (Input.GetMouseButton(0) || (Time.unscaledTime - _menuEnterTimeCounter) < _minMenuStartDelayConfig)
             yield return null;
-        clicked = false;
-        clickedResetRoutine = null;
+        _isClicked = false;
+        _clickedResetCoroutine = null;
     }
 
     //show pause menu
-    public void ShowPauseMenu()
+    public void ShowPauseMenuUI()
     {
-        if (gameState == GameStateEnum.PAUSED)
+        if (GameStateEnum == GameStateEnum.PAUSED)
             return;
 
-        pauseGui.SetActive(true);
+        PauseGuiGameObject.SetActive(true);
         Time.timeScale = 0;
-        gameState = GameStateEnum.PAUSED;
+        GameStateEnum = GameStateEnum.PAUSED;
         AudioManager.S_Instance.PlayEffectsAudio(AudioManager.S_Instance.ButtonClickAudio);
     }
 
     //hide pause menu
-    public void HidePauseMenu()
+    public void HidePauseMenuUI()
     {
-        pauseGui.SetActive(false);
+        PauseGuiGameObject.SetActive(false);
         Time.timeScale = 1;
-        gameState = GameStateEnum.PLAYING;
+        GameStateEnum = GameStateEnum.PLAYING;
         AudioManager.S_Instance.PlayEffectsAudio(AudioManager.S_Instance.ButtonClickAudio);
     }
 
     //show gameplay gui
-    public void ShowGameplay()
+    public void ShowGameplayUI()
     {
-        mainMenuGui.SetActive(false);
-        pauseGui.SetActive(false);
-        gameplayGui.SetActive(true);
-        gameOverGui.SetActive(false);
+        MainMenuGuiGameObject.SetActive(false);
+        PauseGuiGameObject.SetActive(false);
+        GameplayGuiGameObject.SetActive(true);
+        GameOverGuiGameObject.SetActive(false);
         // Reset score when starting a new game session
         if (GameManager.S_Instance != null && GameManager.S_Instance.ScoreManagerInstance != null)
             GameManager.S_Instance.ScoreManagerInstance.ResetTheCurrentScoreValue();
-        gameState = GameStateEnum.PLAYING;
+        GameStateEnum = GameStateEnum.PLAYING;
         AudioManager.S_Instance.PlayEffectsAudio(AudioManager.S_Instance.ButtonClickAudio);
     }
 
     //show game over gui
-    public void ShowGameOver()
+    public void ShowGameOverUI()
     {
-        mainMenuGui.SetActive(false);
-        pauseGui.SetActive(false);
-        gameplayGui.SetActive(false);
-        gameOverGui.SetActive(true);
-        gameState = GameStateEnum.GAMEOVER;
+        MainMenuGuiGameObject.SetActive(false);
+        PauseGuiGameObject.SetActive(false);
+        GameplayGuiGameObject.SetActive(false);
+        GameOverGuiGameObject.SetActive(true);
+        GameStateEnum = GameStateEnum.GAMEOVER;
         AudioManager.S_Instance.PlayMusic(AudioManager.S_Instance.MenuMusicAudio);
     }
 
     //check if user click any menu button
-    public bool IsButton()
+    public bool IsButtonClicked()
     {
-        bool temp = false;
+        bool tmp = false;
 
-        PointerEventData eventData = new PointerEventData(EventSystem.current)
+        PointerEventData eventData = new(EventSystem.current)
         {
             position = Input.mousePosition
         };
 
-        List<RaycastResult> results = new List<RaycastResult>();
+        List<RaycastResult> results = new();
         EventSystem.current.RaycastAll(eventData, results);
 
-        foreach (RaycastResult item in results)
+        foreach (RaycastResult result in results)
         {
-            temp |= item.gameObject.GetComponent<Button>() != null;
+            tmp |= result.gameObject.GetComponent<Button>() != null;
         }
 
-        return temp;
+        return tmp;
     }
 }

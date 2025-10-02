@@ -568,8 +568,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1210228303}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: ShowMainMenu
+        m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
+        m_MethodName: ShowMainMenuUI
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -779,8 +779,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1210228303}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: HidePauseMenu
+        m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
+        m_MethodName: HidePauseMenuUI
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1540,12 +1540,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 22b587f6612554b3eaddc7300dc301b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mainMenuGui: {fileID: 996985231}
-  pauseGui: {fileID: 2123322882}
-  gameplayGui: {fileID: 961859282}
-  gameOverGui: {fileID: 1106066563}
-  gameState: 0
-  minMenuStartDelay: 0.2
+  MainMenuGuiGameObject: {fileID: 996985231}
+  PauseGuiGameObject: {fileID: 2123322882}
+  GameplayGuiGameObject: {fileID: 961859282}
+  GameOverGuiGameObject: {fileID: 1106066563}
+  GameStateEnum: 0
+  _minMenuStartDelayConfig: 0.2
 --- !u!4 &1210228304
 Transform:
   m_ObjectHideFlags: 0
@@ -3020,8 +3020,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1210228303}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: ShowPauseMenu
+        m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
+        m_MethodName: ShowPauseMenuUI
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

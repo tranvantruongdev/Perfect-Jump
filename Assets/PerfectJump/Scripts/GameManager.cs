@@ -52,11 +52,11 @@ public class GameManager : MonoBehaviour
 
     void Update()
     {
-        if (UIManagerInstance.gameState == GameStateEnum.PLAYING)
+        if (UIManagerInstance.GameStateEnum == GameStateEnum.PLAYING)
         {
             if (Input.GetMouseButtonDown(0))
             {
-                if (UIManagerInstance.IsButton())
+                if (UIManagerInstance.IsButtonClicked())
                     return;
 
                 if (!_isInAir)
@@ -131,14 +131,14 @@ public class GameManager : MonoBehaviour
     //restart game, reset score
     public void RestartTheGame()
     {
-        if (UIManagerInstance.gameState == GameStateEnum.PAUSED)
+        if (UIManagerInstance.GameStateEnum == GameStateEnum.PAUSED)
             Time.timeScale = 1;
 
         Camera.transform.position = new Vector3(0, 0, -10);
         ScoreManagerInstance.ResetTheCurrentScoreValue();
         ClearTheScene();
         CreateNewScene();
-        UIManagerInstance.ShowGameplay();
+        UIManagerInstance.ShowGameplayUI();
         _isInAir = false;
         AudioManager.S_Instance.PlayMusic(AudioManager.S_Instance.GameMusicAudio);
     }
@@ -188,10 +188,10 @@ public class GameManager : MonoBehaviour
     //show game over gui
     public void GameOver()
     {
-        if (UIManagerInstance.gameState == GameStateEnum.PLAYING)
+        if (UIManagerInstance.GameStateEnum == GameStateEnum.PLAYING)
         {
             AudioManager.S_Instance.PlayEffectsAudio(AudioManager.S_Instance.GameOverAudio);
-            UIManagerInstance.ShowGameOver();
+            UIManagerInstance.ShowGameOverUI();
             ScoreManagerInstance.UpdateTheGameOverScores();
         }
     }

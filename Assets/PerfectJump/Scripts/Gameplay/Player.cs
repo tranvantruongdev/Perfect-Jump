@@ -11,7 +11,7 @@ public class Player : MonoBehaviour
         spriteRenderer.enabled = false;
         GetComponent<TrailRenderer>().enabled = false;
 
-        if (GameManager.S_Instance.UIManagerInstance.gameState == GameStateEnum.PLAYING)
+        if (GameManager.S_Instance.UIManagerInstance.GameStateEnum == GameStateEnum.PLAYING)
             GameManager.S_Instance.GameOver();
     }
 
