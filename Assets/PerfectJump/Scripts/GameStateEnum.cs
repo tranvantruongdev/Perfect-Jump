@@ -1,4 +1,5 @@
-﻿public enum GameState {
+﻿public enum GameStateEnum
+{
     MENU,
     PLAYING,
     PAUSED,
