@@ -1691,12 +1691,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f14e41c14945a4bde8d1530d8db309da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  efx: 0
-  musicOnSprite: {fileID: -663011761, guid: 156ec492e516ccb4099add479601d65e, type: 3}
-  musicOffSprite: {fileID: 53940023, guid: 156ec492e516ccb4099add479601d65e, type: 3}
-  efxOnSprite: {fileID: -213356348, guid: 156ec492e516ccb4099add479601d65e, type: 3}
-  efxOffSprite: {fileID: 1897002124, guid: 156ec492e516ccb4099add479601d65e, type: 3}
-  spriteButton: {fileID: 1422866177}
+  _isEfx: 0
+  _musicOnSpriteAsset: {fileID: -663011761, guid: 156ec492e516ccb4099add479601d65e,
+    type: 3}
+  _musicOffSpriteAsset: {fileID: 53940023, guid: 156ec492e516ccb4099add479601d65e,
+    type: 3}
+  _efxOnSpriteAsset: {fileID: -213356348, guid: 156ec492e516ccb4099add479601d65e,
+    type: 3}
+  _efxOffSpriteAsset: {fileID: 1897002124, guid: 156ec492e516ccb4099add479601d65e,
+    type: 3}
+  _spriteButtonImage: {fileID: 1422866177}
 --- !u!114 &1422866176
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1742,8 +1746,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1422866175}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: MusicButtonClicked
+        m_TargetAssemblyTypeName: AudioButton, Assembly-CSharp
+        m_MethodName: OnMusicButtonClicked
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2518,12 +2522,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f14e41c14945a4bde8d1530d8db309da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  efx: 1
-  musicOnSprite: {fileID: -663011761, guid: 156ec492e516ccb4099add479601d65e, type: 3}
-  musicOffSprite: {fileID: 53940023, guid: 156ec492e516ccb4099add479601d65e, type: 3}
-  efxOnSprite: {fileID: -213356348, guid: 156ec492e516ccb4099add479601d65e, type: 3}
-  efxOffSprite: {fileID: 1897002124, guid: 156ec492e516ccb4099add479601d65e, type: 3}
-  spriteButton: {fileID: 1826932633}
+  _isEfx: 1
+  _musicOnSpriteAsset: {fileID: -663011761, guid: 156ec492e516ccb4099add479601d65e,
+    type: 3}
+  _musicOffSpriteAsset: {fileID: 53940023, guid: 156ec492e516ccb4099add479601d65e,
+    type: 3}
+  _efxOnSpriteAsset: {fileID: -213356348, guid: 156ec492e516ccb4099add479601d65e,
+    type: 3}
+  _efxOffSpriteAsset: {fileID: 1897002124, guid: 156ec492e516ccb4099add479601d65e,
+    type: 3}
+  _spriteButtonImage: {fileID: 1826932633}
 --- !u!114 &1826932632
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2569,8 +2577,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1826932631}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: EfxButtonClicked
+        m_TargetAssemblyTypeName: AudioButton, Assembly-CSharp
+        m_MethodName: OnEfxButtonClicked
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

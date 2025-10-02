@@ -25,7 +25,7 @@ public class CameraFollowTarget : MonoBehaviour
     //camera follow the player
     void LateUpdate()
     {
-        if (uIManager.gameState == GameState.PLAYING)
+        if (uIManager.gameState == GameStateEnum.PLAYING)
         {
             interpolation = speed * Time.deltaTime;
 

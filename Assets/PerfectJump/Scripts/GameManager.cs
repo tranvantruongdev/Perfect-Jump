@@ -51,7 +51,7 @@ public class GameManager : MonoBehaviour
 
     void Update()
     {
-        if (uIManager.gameState == GameState.PLAYING)
+        if (uIManager.gameState == GameStateEnum.PLAYING)
         {
             if (Input.GetMouseButtonDown(0))
             {
@@ -131,7 +131,7 @@ public class GameManager : MonoBehaviour
     //restart game, reset score
     public void RestartGame()
     {
-        if (uIManager.gameState == GameState.PAUSED)
+        if (uIManager.gameState == GameStateEnum.PAUSED)
             Time.timeScale = 1;
 
         cam.transform.position = new Vector3(0,0,-10);
@@ -168,7 +168,7 @@ public class GameManager : MonoBehaviour
     //show game over gui
     public void GameOver()
     {
-        if (uIManager.gameState == GameState.PLAYING)
+        if (uIManager.gameState == GameStateEnum.PLAYING)
         {
             AudioManager.Instance.PlayEffects(AudioManager.Instance.gameOver);
             uIManager.ShowGameOver();

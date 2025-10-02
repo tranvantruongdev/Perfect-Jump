@@ -1,18 +1,19 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+
+using UnityEngine;
 using UnityEngine.UI;
-using System.Collections;
 
 public class AudioButton : MonoBehaviour
 {
-    public bool efx;
-    public Sprite musicOnSprite, musicOffSprite, efxOnSprite, efxOffSprite;
-    public Image spriteButton;
+    public bool _isEfx;
+    public Sprite _musicOnSpriteAsset, _musicOffSpriteAsset, _efxOnSpriteAsset, _efxOffSpriteAsset;
+    public Image _spriteButtonImage;
 
 
     //set button sprite
     void Start()
     {
-        SetButton();
+        SetButtonSpriteDisplay();
     }
 
     void OnEnable()
@@ -23,34 +24,34 @@ public class AudioButton : MonoBehaviour
     IEnumerator RefreshNextFrame()
     {
         yield return null;
-        SetButton();
+        SetButtonSpriteDisplay();
     }
 
-    public void MusicButtonClicked()
+    public void OnMusicButtonClicked()
     {
         AudioManager.Instance.MuteMusic();
         AudioManager.Instance.PlayEffects(AudioManager.Instance.buttonClick);
-        SetButton();
+        SetButtonSpriteDisplay();
     }
 
-    public void EfxButtonClicked()
+    public void OnEfxButtonClicked()
     {
         AudioManager.Instance.MuteEfx();
         AudioManager.Instance.PlayEffects(AudioManager.Instance.buttonClick);
-        SetButton();
+        SetButtonSpriteDisplay();
     }
 
-    void SetButton()
+    void SetButtonSpriteDisplay()
     {
-        if ((!AudioManager.Instance.IsMusicMute() && !efx) || (!AudioManager.Instance.IsEfxMute() && efx))
-            if (efx)
-                spriteButton.sprite = efxOnSprite;
+        if ((!AudioManager.Instance.IsMusicMute() && !_isEfx) || (!AudioManager.Instance.IsEfxMute() && _isEfx))
+            if (_isEfx)
+                _spriteButtonImage.sprite = _efxOnSpriteAsset;
             else
-                spriteButton.sprite = musicOnSprite;
+                _spriteButtonImage.sprite = _musicOnSpriteAsset;
         else
-            if (efx)
-            spriteButton.sprite = efxOffSprite;
+            if (_isEfx)
+            _spriteButtonImage.sprite = _efxOffSpriteAsset;
         else
-            spriteButton.sprite = musicOffSprite;
+            _spriteButtonImage.sprite = _musicOffSpriteAsset;
     }
 }

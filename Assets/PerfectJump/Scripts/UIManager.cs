@@ -12,7 +12,7 @@ public class UIManager : MonoBehaviour
     public GameObject mainMenuGui;
     public GameObject pauseGui, gameplayGui, gameOverGui;
 
-    public GameState gameState;
+    public GameStateEnum gameState;
 
     bool clicked;
     [SerializeField] float minMenuStartDelay = 0.2f;
@@ -26,12 +26,12 @@ public class UIManager : MonoBehaviour
         pauseGui.SetActive(false);
         gameplayGui.SetActive(false);
         gameOverGui.SetActive(false);
-        gameState = GameState.MENU;
+        gameState = GameStateEnum.MENU;
     }
 
     void Update()
     {
-        if (Input.GetMouseButtonDown(0) && gameState == GameState.MENU && !clicked)
+        if (Input.GetMouseButtonDown(0) && gameState == GameStateEnum.MENU && !clicked)
         {
             if (IsButton())
                 return;
@@ -40,7 +40,7 @@ public class UIManager : MonoBehaviour
             ShowGameplay();
             AudioManager.Instance.PlayMusic(AudioManager.Instance.gameMusic);
         }
-        else if (Input.GetMouseButtonUp(0) && clicked && gameState == GameState.MENU)
+        else if (Input.GetMouseButtonUp(0) && clicked && gameState == GameStateEnum.MENU)
             clicked = false;
     }
 
@@ -52,7 +52,7 @@ public class UIManager : MonoBehaviour
         pauseGui.SetActive(false);
         gameplayGui.SetActive(false);
         gameOverGui.SetActive(false);
-        gameState = GameState.MENU;
+        gameState = GameStateEnum.MENU;
         AudioManager.Instance.PlayEffects(AudioManager.Instance.buttonClick);
         GameManager.Instance.ClearScene();
 
@@ -80,12 +80,12 @@ public class UIManager : MonoBehaviour
     //show pause menu
     public void ShowPauseMenu()
     {
-        if (gameState == GameState.PAUSED)
+        if (gameState == GameStateEnum.PAUSED)
             return;
 
         pauseGui.SetActive(true);
         Time.timeScale = 0;
-        gameState = GameState.PAUSED;
+        gameState = GameStateEnum.PAUSED;
         AudioManager.Instance.PlayEffects(AudioManager.Instance.buttonClick);
     }
 
@@ -94,7 +94,7 @@ public class UIManager : MonoBehaviour
     {
         pauseGui.SetActive(false);
         Time.timeScale = 1;
-        gameState = GameState.PLAYING;
+        gameState = GameStateEnum.PLAYING;
         AudioManager.Instance.PlayEffects(AudioManager.Instance.buttonClick);
     }
 
@@ -108,7 +108,7 @@ public class UIManager : MonoBehaviour
         // Reset score when starting a new game session
         if (GameManager.Instance != null && GameManager.Instance.scoreManager != null)
             GameManager.Instance.scoreManager.ResetCurrentScore();
-        gameState = GameState.PLAYING;
+        gameState = GameStateEnum.PLAYING;
         AudioManager.Instance.PlayEffects(AudioManager.Instance.buttonClick);
     }
 
@@ -119,7 +119,7 @@ public class UIManager : MonoBehaviour
         pauseGui.SetActive(false);
         gameplayGui.SetActive(false);
         gameOverGui.SetActive(true);
-        gameState = GameState.GAMEOVER;
+        gameState = GameStateEnum.GAMEOVER;
         AudioManager.Instance.PlayMusic(AudioManager.Instance.menuMusic);
     }
 
