@@ -107,7 +107,7 @@ public class UIManager : MonoBehaviour
         gameOverGui.SetActive(false);
         // Reset score when starting a new game session
         if (GameManager.S_Instance != null && GameManager.S_Instance.ScoreManagerInstance != null)
-            GameManager.S_Instance.ScoreManagerInstance.ResetCurrentScore();
+            GameManager.S_Instance.ScoreManagerInstance.ResetTheCurrentScoreValue();
         gameState = GameStateEnum.PLAYING;
         AudioManager.S_Instance.PlayEffectsAudio(AudioManager.S_Instance.ButtonClickAudio);
     }

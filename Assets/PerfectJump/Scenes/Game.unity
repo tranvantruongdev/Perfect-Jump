@@ -2201,10 +2201,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ced6de7cee8d430fbc5aba3f9f34e8d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentScoreLabel: {fileID: 361234659}
-  highScoreLabel: {fileID: 1335744205}
-  currentScoreGameOverLabel: {fileID: 936053132}
-  highScoreGameOverLabel: {fileID: 1089906235}
+  _currentScoreText: {fileID: 361234659}
+  _highScoreText: {fileID: 1335744205}
+  _currentScoreGameOverText: {fileID: 936053132}
+  _highScoreGameOverText: {fileID: 1089906235}
 --- !u!4 &1662418497
 Transform:
   m_ObjectHideFlags: 0

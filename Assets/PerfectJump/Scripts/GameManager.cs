@@ -135,7 +135,7 @@ public class GameManager : MonoBehaviour
             Time.timeScale = 1;
 
         Camera.transform.position = new Vector3(0, 0, -10);
-        ScoreManagerInstance.ResetCurrentScore();
+        ScoreManagerInstance.ResetTheCurrentScoreValue();
         ClearTheScene();
         CreateNewScene();
         UIManagerInstance.ShowGameplay();
@@ -192,7 +192,7 @@ public class GameManager : MonoBehaviour
         {
             AudioManager.S_Instance.PlayEffectsAudio(AudioManager.S_Instance.GameOverAudio);
             UIManagerInstance.ShowGameOver();
-            ScoreManagerInstance.UpdateScoreGameover();
+            ScoreManagerInstance.UpdateTheGameOverScores();
         }
     }
 }

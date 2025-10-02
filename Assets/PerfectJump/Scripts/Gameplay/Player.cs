@@ -47,12 +47,12 @@ public class Player : MonoBehaviour
                 {
                     AudioManager.S_Instance.PlayEffectsAudio(AudioManager.S_Instance.PerfectAudio);
                     transform.position = new Vector2(collision.transform.position.x, transform.position.y);
-                    GameManager.S_Instance.ScoreManagerInstance.UpdateScore(2);
+                    GameManager.S_Instance.ScoreManagerInstance.UpdateScoreValue(2);
                     GameManager.S_Instance.PlayPerfectAnimation();
                 }
                 else
                 {
-                    GameManager.S_Instance.ScoreManagerInstance.UpdateScore(1);
+                    GameManager.S_Instance.ScoreManagerInstance.UpdateScoreValue(1);
                 }
 
                 transform.rotation = new Quaternion(0, 0, 0, 0);

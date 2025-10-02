@@ -3,9 +3,9 @@ using UnityEngine.UI;
 
 public class ScoreManager : MonoBehaviour
 {
-    public Text currentScoreLabel, highScoreLabel, currentScoreGameOverLabel, highScoreGameOverLabel;
+    public Text _currentScoreText, _highScoreText, _currentScoreGameOverText, _highScoreGameOverText;
 
-    int currentScore, highScore;
+    int _currentScoreCounter, _highScoreCounter;
     // Start is called before the first frame update
 
     //init and load highscore
@@ -14,42 +14,42 @@ public class ScoreManager : MonoBehaviour
         if (!PlayerPrefs.HasKey("HighScore"))
             PlayerPrefs.SetInt("HighScore", 0);
 
-        highScore = PlayerPrefs.GetInt("HighScore");
+        _highScoreCounter = PlayerPrefs.GetInt("HighScore");
 
-        UpdateHighScore();
-        ResetCurrentScore();
+        UpdateTheHighScore();
+        ResetTheCurrentScoreValue();
     }
 
     //save and update highscore
-    void UpdateHighScore()
+    void UpdateTheHighScore()
     {
-        if (currentScore > highScore)
-            highScore = currentScore;
+        if (_currentScoreCounter > _highScoreCounter)
+            _highScoreCounter = _currentScoreCounter;
 
-        highScoreLabel.text = highScore.ToString();
-        PlayerPrefs.SetInt("HighScore", highScore);
+        _highScoreText.text = _highScoreCounter.ToString();
+        PlayerPrefs.SetInt("HighScore", _highScoreCounter);
     }
 
     //update currentscore
-    public void UpdateScore(int value)
+    public void UpdateScoreValue(int value)
     {
-        currentScore += value;
-        currentScoreLabel.text = currentScore.ToString();
+        _currentScoreCounter += value;
+        _currentScoreText.text = _currentScoreCounter.ToString();
     }
 
     //reset current score
-    public void ResetCurrentScore()
+    public void ResetTheCurrentScoreValue()
     {
-        currentScore = 0;
-        UpdateScore(0);
+        _currentScoreCounter = 0;
+        UpdateScoreValue(0);
     }
 
     //update gameover scores
-    public void UpdateScoreGameover()
+    public void UpdateTheGameOverScores()
     {
-        UpdateHighScore();
+        UpdateTheHighScore();
 
-        currentScoreGameOverLabel.text = currentScore.ToString();
-        highScoreGameOverLabel.text = highScore.ToString();
+        _currentScoreGameOverText.text = _currentScoreCounter.ToString();
+        _highScoreGameOverText.text = _highScoreCounter.ToString();
     }
 }
