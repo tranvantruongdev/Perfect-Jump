@@ -2663,6 +2663,7 @@ MonoBehaviour:
     type: 3}
   Camera: {fileID: 534669904}
   PerfectAnimatorInstance: {fileID: 2045409397}
+  PerfectText: {fileID: 2045409398}
   MinYObstaclePositionConfig: -4
   MaxYObstaclePositionConfig: 2.5
   ObstacleColorsConfig: []

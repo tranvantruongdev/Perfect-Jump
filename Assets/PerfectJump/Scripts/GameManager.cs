@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
@@ -11,6 +12,7 @@ public class GameManager : MonoBehaviour
     public GameObject ObstaclePrefabGameObject;
     public Camera Camera;
     public Animator PerfectAnimatorInstance;
+    public Text PerfectText;
 
     [Header("Game settings")]
     [Space(5)]
@@ -27,6 +29,7 @@ public class GameManager : MonoBehaviour
     int _obstacleIndexNumber;
 
     public bool _isInAir;
+    int _comboCount;
 
     void Awake()
     {
@@ -104,6 +107,7 @@ public class GameManager : MonoBehaviour
         CreateNewObstacleObject();
 
         _isInAir = false;
+        ResetCombo();
     }
 
     //create obstacle
@@ -159,7 +163,17 @@ public class GameManager : MonoBehaviour
 
     public void PlayPerfectAnimation()
     {
+        _comboCount++;
+        if (PerfectText != null)
+            PerfectText.text = $"Perfekte Landung! x{_comboCount}";
         PerfectAnimatorInstance.Play("Show");
+    }
+
+    public void ResetCombo()
+    {
+        _comboCount = 0;
+        if (PerfectText != null)
+            PerfectText.text = string.Empty;
     }
 
     Color GetRandomColorFromConfig()
@@ -192,6 +206,7 @@ public class GameManager : MonoBehaviour
     {
         if (UIManagerInstance.GameStateEnum == GameStateEnum.PLAYING)
         {
+            ResetCombo();
             AudioManager.S_Instance.PlayEffectsAudio(AudioManager.S_Instance.GameOverAudio);
             UIManagerInstance.ShowGameOverUI();
             ScoreManagerInstance.UpdateTheGameOverScores();

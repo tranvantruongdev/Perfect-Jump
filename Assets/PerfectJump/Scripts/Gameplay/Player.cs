@@ -53,6 +53,7 @@ public class Player : MonoBehaviour
                 else
                 {
                     GameManager.S_Instance.ScoreManagerInstance.UpdateScoreValue(1);
+                    GameManager.S_Instance.ResetCombo();
                 }
 
                 transform.rotation = new Quaternion(0, 0, 0, 0);
