@@ -102,6 +102,8 @@ public class GameManager : MonoBehaviour
 
         //third obstacle
         CreateNewObstacleObject();
+
+        _isInAir = false;
     }
 
     //create obstacle
